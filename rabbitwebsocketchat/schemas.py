@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 class User_Model(BaseModel):
-    user_id:str
+    user_id:int
 
 class Message(BaseModel):
     room_id: str
