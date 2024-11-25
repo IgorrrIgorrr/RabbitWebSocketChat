@@ -8,7 +8,10 @@ class Settings(BaseSettings):
     DB_PORT: str
     DB_NAME: str
     API_KEY: str
-
+    SECRET_KEY: str
+    ALGORITHM: str
+    EXPIRE_ACCESS_TOKEN_EXPIRE_MINUTES: int
+    EXPIRE_REFRESH_TOKEN_EXPIRE_DAYS: int
     REDIS_URL: str
 
     @property

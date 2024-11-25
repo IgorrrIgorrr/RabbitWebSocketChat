@@ -8,4 +8,6 @@ class Base(DeclarativeBase):
 
 class User(Base):
     __tablename__ = "users"
-    user_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    name: Mapped[str]
+    password_hash: Mapped[str]
