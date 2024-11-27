@@ -25,3 +25,4 @@ class User(BaseModel):
 
 class UserInDB(User):
     password_hash: str
+    model_config = {"from_attributes": True}
