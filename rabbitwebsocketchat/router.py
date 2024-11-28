@@ -14,9 +14,9 @@ MAX_USERS_PER_ROOM = 2
 def send_message_to_rabbit(message: Message, 
                            user: Annotated[UserInDB, Depends(get_current_user_from_service)]):
     room_key = f"room:{message.room_id}"
-    users_in_room = redis.smembers(room_key)
+    users_in_room = {user.decode('utf-8') for user in redis.smembers(room_key)}
     if len(users_in_room)>= MAX_USERS_PER_ROOM:
-        raise HTTPException(detail="room is fool")
+        raise HTTPException(status_code=400, detail="room is fool")
     if user.username not in users_in_room:
         redis.sadd(room_key, user.username)
     try:
@@ -34,6 +34,8 @@ def get_updates_from_rabbit(websocket: WebSocket,
     is_member = redis.sismember(room_key, user.username)
     if not is_member:
         websocket.close(code=1000)
+        raise HTTPException(status_code=403, detail="You are not in this room.")
+    websocket.accept()
     try:
         while True:
             message = router.subscribe("room_updates")
