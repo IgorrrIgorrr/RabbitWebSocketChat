@@ -4,7 +4,7 @@ from rabbitwebsocketchat.config import settings
 from fastapi.security.api_key import APIKeyHeader
 from fastapi import status 
 from rabbitwebsocketchat.repositories.redis_repository import RedisRepository
-from rabbitwebsocketchat.repositories.repository import UserRepository
+from rabbitwebsocketchat.repositories.user_repository import UserRepository
 from rabbitwebsocketchat.repositories.auth_repository import AuthRepository
 from rabbitwebsocketchat.database import get_db
 from sqlalchemy.orm import Session

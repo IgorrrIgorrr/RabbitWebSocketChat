@@ -6,7 +6,7 @@ from jose.exceptions import JWTError
 from jose import jwt
 from rabbitwebsocketchat.models import User
 from rabbitwebsocketchat.repositories.redis_repository import RedisRepository
-from rabbitwebsocketchat.repositories.repository import UserRepository
+from rabbitwebsocketchat.repositories.user_repository import UserRepository
 from rabbitwebsocketchat.repositories.auth_repository import AuthRepository
 from rabbitwebsocketchat.schemas import Token, TokenData, User_Model, UserInDB
 from rabbitwebsocketchat.auth import oauth2_scheme, pwd_context

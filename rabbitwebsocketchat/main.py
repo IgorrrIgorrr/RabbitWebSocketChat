@@ -2,6 +2,7 @@ from datetime import timedelta
 from typing import Annotated
 from fastapi import Depends, FastAPI, Form, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
+from rabbitwebsocketchat.router import router
 from rabbitwebsocketchat.models import Base, User
 from rabbitwebsocketchat.database import engine
 from rabbitwebsocketchat.dependencies import get_current_user_from_service, get_service
@@ -14,7 +15,6 @@ Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
 
 @app.post("/auth/register")
 def registration(
